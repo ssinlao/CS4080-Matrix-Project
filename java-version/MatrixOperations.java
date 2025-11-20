@@ -11,15 +11,9 @@ public class MatrixOperations {
             displayMenu();
             int choice = getIntInput("Enter your choice: ");
 
-            if (choice == 5) {
+            if (choice == 4) {
                 running = false;
                 System.out.println("Exiting program. Goodbye!");
-                continue;
-            }
-
-            if (choice == 4) {
-                performanceTest();
-                waitForUser();
                 continue;
             }
 
@@ -71,8 +65,7 @@ public class MatrixOperations {
         System.out.println("1. Matrix Addition");
         System.out.println("2. Matrix Subtraction");
         System.out.println("3. Matrix Multiplication");
-        System.out.println("4. Performance Test (10x10 multiplication)");
-        System.out.println("5. Exit");
+        System.out.println("4. Exit");
         System.out.println("=".repeat(50));
     }
 
@@ -131,37 +124,6 @@ public class MatrixOperations {
         reader.close();
         System.out.println("Matrix loaded successfully from " + filename);
         return matrix;
-    }
-
-    private static void performanceTest() {
-        System.out.println("\n" + "=".repeat(50));
-        System.out.println("PERFORMANCE TEST: 10x10 Matrix Multiplication");
-        System.out.println("=".repeat(50));
-
-        Matrix m1 = new Matrix(10, 10);
-        Matrix m2 = new Matrix(10, 10);
-
-        m1.fillRandom();
-        m2.fillRandom();
-
-        System.out.println("Matrices populated with random values...");
-
-        long startTime = System.nanoTime();
-        Matrix result = Matrix.multiply(m1, m2);
-        long endTime = System.nanoTime();
-
-        double duration = (endTime - startTime) / 1_000_000.0;
-
-        System.out.println("\nTime taken: " + duration + " milliseconds");
-        System.out.println("Time taken: " + (duration * 1000) + " microseconds");
-
-        System.out.println("\nFirst 5x5 of result matrix:");
-        for (int i = 0; i < Math.min(5, result.getRows()); i++) {
-            for (int j = 0; j < Math.min(5, result.getCols()); j++) {
-                System.out.printf("%.2f\t", result.getElement(i, j));
-            }
-            System.out.println();
-        }
     }
 
     private static int getIntInput(String prompt) {

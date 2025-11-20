@@ -1,2 +1,2 @@
-Matrix.class
-MatrixOperations.class
+*.class
+node_modules
